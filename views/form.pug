@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1 Enter a message
+    form(action="/new", method="post") 
+        label(for="messageUser") Name
+        input(type="text" name="messageUser" id="messageUser" required)
+        label(for="messageText") Message
+        input(type="text" name="messageText" id="messageText" required)
+        input(type="submit", value="Submit")
