@@ -4,7 +4,12 @@ block content
     h1 Enter a message
     form(action="/new", method="post" class="newMessageForm") 
         label(for="messageUser") Name
-        input(type="text" name="messageUser" id="messageUser" required maxLength="50")
+        input(type="text" name="messageUser" id="messageUser" required maxLength="50" value=(undefined==newMessage ? "" : newMessage.user))
         label(for="messageText") Message
-        textarea(name="messageText", cols="30", rows="3" id="messageText" maxLength="250")
+        textarea(name="messageText", cols="30", rows="3" id="messageText" maxLength="250" value=(undefined==newMessage ? "" : newMessage.text))
         input(type="submit", value="Submit")
+
+    if errors
+        ul
+            for error in errors
+                li!=error.msg

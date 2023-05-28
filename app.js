@@ -5,6 +5,9 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
 const indexRouter = require("./routes/index");
+const compression = require("compression");
+const helmet = require("helmet");
+const RateLimit = require("express-rate-limit");
 
 const app = express();
 
@@ -20,6 +23,18 @@ main().catch((err) => console.log(err));
 async function main() {
     await mongoose.connect(mongoDB);
 }
+
+// compress the routes
+app.use(compression());
+// use helmet to secure app by setting up the HTTP headers
+app.use(helmet());
+
+// set up rate limiter
+const limiter = RateLimit({
+    windowMs: 1 * 60 * 1000, // 1 minute
+    max: 20,
+});
+app.use(limiter);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
