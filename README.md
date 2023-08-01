@@ -2,7 +2,7 @@
 
 The goal of this project is to make a mini message board using Express Generator.
 
-[View the live site here](https://odin-mini-message-board-production-e5b1.up.railway.app/)
+[View the live site here](https://odin-mini-message-board-c0xj.onrender.com/)
 
 #### Install:
 
